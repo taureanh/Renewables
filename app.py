@@ -74,15 +74,15 @@ def location():
     """Return dashboard.html."""
     return render_template("location.html")
 
-@app.route("/webscrape_sunburst")
+@app.route("/webscrape")
 def webscrape_sunburst():
     data =  json.load(open("my_renewables.json","r")) 
-    return render_template("webscrape_sunburst.html",r_last_refresh=data["last_scrape"],renewable_title_0=data["articles "][0],renewable_link_0=data["links"][0],renewable_title_1=data["articles "][1],renewable_link_1=data["links"][2], renewable_title_2 = data["articles "][2],renewable_link_2=data["links"][4],renewable_title_3=data["articles "][3],renewable_link_3=data["links"][6])
+    return render_template("webscrape.html",r_last_refresh=data["last_scrape"],renewable_title_0=data["articles "][0],renewable_link_0=data["links"][0],renewable_title_1=data["articles "][1],renewable_link_1=data["links"][2], renewable_title_2 = data["articles "][2],renewable_link_2=data["links"][4],renewable_title_3=data["articles "][3],renewable_link_3=data["links"][6])
 
 @app.route("/scrape")
 def scrape():
     renewable_scrape.renewable_scrape()
-    return redirect("/webscrape_sunburst")
+    return redirect("/webscrape")
 
 @app.route("/api/heatmap")
 def heatmapgeojson():
