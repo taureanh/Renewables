@@ -8,6 +8,7 @@ from datetime import date
 from flask_pymongo import PyMongo
 import datetime
 import json
+from selenium import webdriver
 
 renewables = { }
 now = datetime.datetime.now()
@@ -17,7 +18,7 @@ print(last_refresh)
 renewables.update({"renewable_refresh": last_refresh })
 
 def renewable_scrape():
-    executable_path = {'executable_path': 'chromedriver'}
+    executable_path = {'executable_path': 'C:\Windows\System32\chromedriver'}
     browser = Browser('chrome', **executable_path, headless=False)
     url = "https://www.renewableenergyworld.com"
     #base_url = "https://www.renewableenergyworld.com"
